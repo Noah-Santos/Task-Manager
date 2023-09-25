@@ -1,21 +1,21 @@
 const result = document.querySelector('.result');
 
-const fetchPeople = async() =>{
+const fetchTask = async() =>{
     try {
-        const {data} = await axios.get('/api/people');
+        const {data} = await axios.get('/api/task');
         console.log(data);
 
         // going through the data array and getting the data that holds the value of data
-        const people = data.data.map((person)=>{
-            return `<h5>${person.name}</h5><button onclick="nameAlter('${person.name}', '${person.id}')">Edit</button><button onclick="deletePerson(${person.id})">Delete</button>`;
+        const task = data.data.map((tasks)=>{
+            return `<h5>${tasks.name}</h5><button onclick="nameAlter('${tasks.name}', '${tasks.id}')">Edit</button><button onclick="deletePerson(${tasks.id})">Delete</button>`;
         })
 
-        result.innerHTML = people.join("");
+        result.innerHTML = task.join("");
     }catch(e){
         // formAlert.textContent = e.response.data.msg;
     }
 }
-fetchPeople();
+fetchTask();
 
 // HTML Submit Form
 const btn = document.querySelector('.submit-btn');
@@ -29,21 +29,21 @@ btn.addEventListener('click', async(event)=>{
 let nameValue = input.value;
     try{
         if(!editMode){
-            const {data} = await axios.post('/api/people', {name: nameValue});
+            const {data} = await axios.post('/api/task', {name: nameValue});
             const h5 = document.createElement('h5');
-            h5.textContent = data.person;
+            h5.textContent = data.tasks;
             result.appendChild(h5);
-            fetchPeople();
+            fetchTask();
         }else{
             console.log(currentId)
             nameValue = input.value
             console.log(nameValue)
-            fetch(`/api/people/${currentId}`, {
+            fetch(`/api/task/${currentId}`, {
                 method: "PUT",
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({name: nameValue}),
             })
-            fetchPeople();
+            fetchTask();
             editMode = false;
         }
         
@@ -65,11 +65,11 @@ function nameAlter(name, ids){
 }
 
 function deletePerson(id){
-    fetch(`/api/people/${id}`, {
+    fetch(`/api/task/${id}`, {
         // makes sure that the put function is the one that is grabbed
         method: "DELETE",
         // determines what data to send
         headers: {'Content-Type': 'application/json'},
     })
-    fetchPeople();
+    fetchTask();
 }

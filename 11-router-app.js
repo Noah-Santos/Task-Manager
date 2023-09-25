@@ -3,7 +3,7 @@ require('dotenv').config();
 require('./db/connect');
 const app = express();
 
-const people = require('./routes/people-controller');
+const task = require('./routes/task-controller');
 const auth = require('./routes/auth');
 const connectDB = require('./db/connect');
 
@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // routes/router
-app.use('/api/people', people);
+app.use('/api/task', task);
 app.use('/login', auth);
 
 // Server Listen
