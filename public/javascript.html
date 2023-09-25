@@ -35,7 +35,11 @@
                 <button type="submit" class="block submit-btn">submit</button>
                 <div class="row">
                     <button><a href="./edit.html" class="editLink">Edit</a></button>
-                    <button>Delete</button>
+                </div>
+                <div class="row">
+                    <label for="nameDel"> enter task name to delete</label>
+                    <input type="text" name="nameDel" id="nameDel" class="form-input" id="deleteID" autocomplete="false">
+                    <button onclick="deleteTask()">Delete</button>
                 </div>
             </form>
             <div class="result"></div>

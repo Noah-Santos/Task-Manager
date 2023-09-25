@@ -7,7 +7,7 @@ const fetchTask = async() =>{
 
         // going through the data array and getting the data that holds the value of data
         const task = data.data.map((tasks)=>{
-            return `<h5>${tasks.name}</h5><button onclick="nameAlter('${tasks.name}', '${tasks.id}')">Edit</button><button onclick="deletePerson(${tasks.id})">Delete</button>`;
+            return `<h5>${tasks.name}</h5><button onclick="nameAlter('${tasks.name}', '${tasks.id}')">Edit</button>`;
         })
 
         result.innerHTML = task.join("");
@@ -67,8 +67,10 @@ function nameAlter(name, ids){
     currentId = ids;
 }
 
-function deletePerson(id){
-    fetch(`/api/task/${id}`, {
+function deleteTask(){
+    let delName = document.querySelector('#nameDel');
+    // let id = 
+    fetch(`/api/task/${delName}`, {
         // makes sure that the put function is the one that is grabbed
         method: "DELETE",
         // determines what data to send
