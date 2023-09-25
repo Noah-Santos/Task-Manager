@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Essay",
+        "description": "Write essay",
+        "id": 1,
+        "completed": false
+    },
+    {
+        "name": "Project",
+        "description": "Finish task manager project",
+        "id": 2,
+        "completed": false
+    },
+    {
+        "name": "Planning",
+        "description": "Plan website",
+        "id": 3,
+        "completed": false
+    },
+    {
+        "name": "Caretaking",
+        "description": "Care for plants",
+        "id": 4,
+        "completed": false
+    },
+    {
+        "name": "Feeding",
+        "description": "Feed cat",
+        "id": 5,
+        "completed": false
+    },
+    {
+        "name": "Eat",
+        "description": "Eat dinner",
+        "id": 6,
+        "completed": false
+    },
+    {
+        "name": "Study",
+        "description": "Study coding content",
+        "id": 7,
+        "completed": false
+    },
+    {
+        "name": "Read",
+        "description": "Read book",
+        "id": 8,
+        "completed": false
+    },
+    {
+        "name": "Charging",
+        "description": "Charge devices",
+        "id": 9,
+        "completed": false
+    },
+    {
+        "name": "Logging",
+        "description": "Log work hours",
+        "id": 10,
+        "completed": false
+    }
+]
