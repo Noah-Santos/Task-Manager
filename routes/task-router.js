@@ -11,9 +11,9 @@ router.get('/', (req,res)=>{
 
 router.post('/', (req,res)=>{
     console.log(req.body);
-    const {name} = req.body;
-    if(name){
-        return res.status(201).json({success:true,tasks:name});
+    const {name, description} = req.body;
+    if(name && description){
+        return res.status(201).json({success:true,tasks:name,tasks:description});
     }
     res.status(404).json({success:false,msg:'Please provide a name'});
 });

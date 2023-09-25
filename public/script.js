@@ -20,6 +20,7 @@ fetchTask();
 // HTML Submit Form
 const btn = document.querySelector('.submit-btn');
 const input = document.querySelector('.form-input');
+const input2 = document.querySelector('#description');
 const formAlert = document.querySelector('.form-alert');
 
 btn.addEventListener('click', async(event)=>{
@@ -27,9 +28,10 @@ btn.addEventListener('click', async(event)=>{
     event.preventDefault();
     
 let nameValue = input.value;
+let descValue = input2.value;
     try{
         if(!editMode){
-            const {data} = await axios.post('/api/task', {name: nameValue});
+            const {data} = await axios.post('/api/task', {name: nameValue,description:descValue});
             const h5 = document.createElement('h5');
             h5.textContent = data.tasks;
             result.appendChild(h5);
@@ -53,6 +55,7 @@ let nameValue = input.value;
         // formAlert.textContent = e.response.data.msg;
     }
     input.value='';
+    input2.value='';
 });
 
 var editMode = false;

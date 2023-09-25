@@ -7,7 +7,7 @@ const readTask = (req,res)=>{
 
 // post function for creating task
 const createTask = (req,res)=>{
-    const {name} = req.body;
+    const {name, description} = req.body;
     if(!name){
         return res.status(400).json({success:false, data:[], msg:'Please enter a name'});
     }
@@ -16,7 +16,7 @@ const createTask = (req,res)=>{
     const ids = task[task.length-1].id + 1;
 
     // makes a new object using the name and id
-    const newPerson = {id:ids, name:name    };
+    const newPerson = {id:ids, name:name, description:description, completed:false};
 
     task.push(newPerson)
 
@@ -27,6 +27,7 @@ const createTask = (req,res)=>{
 const updateTask = (req,res)=>{
     const {id} = req.params;
     const {name} = req.body;
+    const {description} = req.body;
     console.log(name + " " + id )
     const tasks = task.find(tasks=>{return tasks.id === Number(id)});
     if(!tasks){
@@ -36,6 +37,7 @@ const updateTask = (req,res)=>{
     const newTask = task.map(tasks=>{
         if(tasks.id === Number(id)){
             tasks.name = name;
+            tasks.description = description;
         }
         return tasks;
     })
