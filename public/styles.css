@@ -125,6 +125,7 @@ h5 {
 
 .row{
   display: flex;
+  flex-direction: row;
   justify-content: space-evenly;
   margin-top: 1rem;
 }
@@ -135,6 +136,11 @@ h5 {
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-2);
   margin-bottom: 1rem;
+}
+
+.list{
+  display: flex;
+  flex-direction: column;
 }
 
 .padding{
@@ -149,6 +155,26 @@ h5 {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+}
+
+.completed{
+  text-decoration: line-through;
+  color: #515151;
+}
+
+.grow2{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  /* width: 25%; */
+  flex-grow: 2;
+}
+.grow3{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  /* width: 75%; */
+  flex-grow: 3;
 }
 
 .results{
