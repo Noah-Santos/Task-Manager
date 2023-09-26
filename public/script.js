@@ -41,6 +41,8 @@ async function change(){
             sessionStorage.setItem('chosenTask', results.value);
             sessionStorage.setItem('chosenDescription', task.description);
             sessionStorage.setItem('chosenID', task.id);
+            chosenID = task.id;
+            console.log(chosenID)
         }
     })
 }
@@ -100,17 +102,12 @@ function nameAlter(){
 }
 
 
-function deleteTask(){
-    async(event)=>{
-        let delName = document.getElementById('#nameDel').value;
-        // let id = 
-        // console.log(delName);
-        fetch(`/api/task/${delName}`, {
-            // makes sure that the put function is the one that is grabbed
-            method: "DELETE",
-            // determines what data to send
-            headers: {'Content-Type': 'application/json'},
-        })
-        fetchTask();
-    }
+function deleteThis(){
+    fetch(`/api/task/${chosenID}`, {
+        // makes sure that the put function is the one that is grabbed
+        method: "DELETE",
+        // determines what data to send
+        headers: {'Content-Type': 'application/json'},
+    })
+    fetchTask();
 }
