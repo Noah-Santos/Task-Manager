@@ -20,7 +20,7 @@ fetchTask();
 // HTML Submit Form
 const btn = document.querySelector('.submit-btn');
 const input = document.querySelector('.form-input');
-const input2 = document.querySelector('#description');
+const input2 = document.querySelector('#newDescription');
 const formAlert = document.querySelector('.form-alert');
 
 btn.addEventListener('click', async(event)=>{
@@ -38,12 +38,12 @@ let descValue = input2.value;
             fetchTask();
         }else{
             console.log(currentId)
-            nameValue = input.value
             console.log(nameValue)
+            console.log(descValue);
             fetch(`/api/task/${currentId}`, {
                 method: "PUT",
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({name: nameValue}),
+                body: JSON.stringify({name: nameValue, description: descValue}),
             })
             fetchTask();
             editMode = false;
@@ -68,6 +68,7 @@ function nameAlter(name, ids){
 }
 
 function deleteTask(){
+    // event.preventDefault();s
     let delName = document.querySelector('#nameDel');
     // let id = 
     fetch(`/api/task/${delName}`, {

@@ -32,14 +32,19 @@
                     <input type="text" name="description" id="description" class="form-input" autocomplete="false">
                     <small class="form-alert"></small>
                 </div>
-                <button type="submit" class="block submit-btn">submit</button>
+                <button type="submit" class="block submit-btn form-row">submit</button>
+                <hr>
+                <div class="form-row">
+                    <div class="form-row">
+                        <label for="nameDel"> enter task name to delete</label>
+                        <input type="text" name="nameDel" id="nameDel" class="form-input" autocomplete="false">
+                    </div>
+                        <button onclick="deleteTask()" class="flex">Delete</button>
+
+                </div>
+                <hr>
                 <div class="row">
                     <button><a href="./edit.html" class="editLink">Edit</a></button>
-                </div>
-                <div class="row">
-                    <label for="nameDel"> enter task name to delete</label>
-                    <input type="text" name="nameDel" id="nameDel" class="form-input" autocomplete="false">
-                    <button onclick="deleteTask()">Delete</button>
                 </div>
             </form>
             <div class="result"></div>
