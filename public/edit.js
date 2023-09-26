@@ -7,7 +7,7 @@ const fetchTask = async() =>{
 
         // going through the data array and getting the data that holds the value of data
         const task = data.data.map((tasks)=>{
-            return `<h5>${tasks.name}</h5>`;
+            return `<h5>${tasks.name}</h5><button onclick="nameAlter('${tasks.name}', '${tasks.id}', '${tasks.description}')">Edit</button>`;
         })
 
         result.innerHTML = task.join("");
@@ -20,7 +20,7 @@ fetchTask();
 // HTML Submit Form
 const btn = document.querySelector('.submit-btn');
 const input = document.querySelector('.form-input');
-const input2 = document.querySelector('#description');
+const input2 = document.querySelector('#newDescription');
 const formAlert = document.querySelector('.form-alert');
 
 btn.addEventListener('click', async(event)=>{
@@ -61,23 +61,9 @@ let descValue = input2.value;
 var editMode = false;
 var currentId = '';
 
-function nameAlter(name, ids){
+function nameAlter(name, ids, desc){
     editMode = true;
     input.value = name;
+    input2.value = desc;
     currentId = ids;
-}
-
-function deleteTask(){
-    async(event)=>{
-        let delName = document.getElementById('#nameDel').value;
-        // let id = 
-        // console.log(delName);
-        fetch(`/api/task/${delName}`, {
-            // makes sure that the put function is the one that is grabbed
-            method: "DELETE",
-            // determines what data to send
-            headers: {'Content-Type': 'application/json'},
-        })
-        fetchTask();
-    }
 }
