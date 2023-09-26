@@ -129,11 +129,30 @@ h5 {
   margin-top: 1rem;
 }
 
-.flex{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.data{
   width: 100%;
+  background: var(--white);
+  border-radius: var(--borderRadius);
+  box-shadow: var(--shadow-2);
+  margin-bottom: 1rem;
+}
+
+.padding{
+  padding: 2rem;
+}
+
+.content{
+  background: var(--white);
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.results{
+  margin-left: 1rem;
 }
 
 small,
@@ -315,7 +334,7 @@ form {
   width: 90vw;
   max-width: 600px;
   margin: 0 auto;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 nav {
   height: 4rem;
