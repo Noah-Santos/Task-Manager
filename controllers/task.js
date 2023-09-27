@@ -26,8 +26,7 @@ const createTask = (req,res)=>{
 // put function for update task
 const updateTask = (req,res)=>{
     const {id} = req.params;
-    const {name} = req.body;
-    const {description} = req.body;
+    const {name, description, completed} = req.body;
     console.log(name + " " + id )
     const tasks = task.find(tasks=>{return tasks.id === Number(id)});
     if(!tasks){
@@ -38,6 +37,7 @@ const updateTask = (req,res)=>{
         if(tasks.id === Number(id)){
             tasks.name = name;
             tasks.description = description;
+            tasks.completed = completed;
         }
         return tasks;
     })

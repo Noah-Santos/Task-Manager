@@ -4,13 +4,40 @@ const fetchTask = async() =>{
     
     try {
         const {data} = await axios.get('/api/task');
-        console.log(data);
         // going through the data array and getting the data that holds the value of data
-        const task = data.data.map((tasks)=>{
-            return `<form class="row">
-            <div class="grow2"><input type="checkbox" id="item${tasks.id}" name="${tasks.id}" value="${tasks.name}" onclick="checkedTask(${tasks.id})"></div>
-            <div class="grow3"><label for="${tasks.id}"><h3>${tasks.name}: ${tasks.description}</h3></label><br></div>
-            </form>`;
+
+        let task = data.data.map(tasks =>{
+            if(tasks.completed){
+                return `
+                <form class="allRow completedForm">
+                    <div class="taskAll">
+                        <label for="${tasks.id}" class="info completed">
+                            <h2>${tasks.name}</h2><h3>${tasks.description}</h3>
+                        </label>
+                    </div>
+                    <div class="finish">
+                        <h4 class="marginGone">Completed:</h4>
+                        <input type="checkbox" id="item${tasks.id}" name="${tasks.id}" value="${tasks.name}" onclick="checkedTask(${tasks.id})" checked>
+                    </div>
+                </form>`;
+            }else if(!tasks.completed){
+                return `
+                <form class="allRow">
+                    <div class="taskAll">
+                        <label for="${tasks.id}" class="info">
+                            <h2>${tasks.name}</h2>
+                            <h3>${tasks.description}</h3>
+                        </label>
+                    </div>
+                    <div class="finish">
+                        <h4 class="marginGone">Completed:</h4>
+                        <input type="checkbox" id="item${tasks.id}" name="${tasks.id}" value="${tasks.name}" onclick="checkedTask(${tasks.id})">
+                    </div>
+                </form>`;
+            }
+        })
+        data.data.map((tasks)=>{
+            
         })
 
         result.innerHTML = task.join("");
@@ -20,25 +47,33 @@ const fetchTask = async() =>{
 }
 fetchTask();
 
-function checkedTask(id){
-    let element = document.getElementById(`item${id}`)
+async function checkedTask(id){
+    let element = document.getElementById(`item${id}`);
+    const {data} = await axios.get('/api/task');
+    let name = '';
+    let description = '';
+
+    data.data.map(task=>{
+        if(task.id == id){
+            name = task.name;
+            description = task.description;
+        }
+    })
+
     if(element.checked){
-        console.log('item done')
-        // console.log(taskChange)
         fetch(`/api/task/${id}`, {
             method: "PUT",
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({completed: true}),
+            body: JSON.stringify({completed: true, name:name, description:description}),
         })
         element.classList.add('completed');
     }else if(!element.checked){
-        // console.log('item done')
-        // console.log(taskChange)
         fetch(`/api/task/${id}`, {
             method: "PUT",
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({completed: false}),
+            body: JSON.stringify({completed: false, name:name, description:description}),
         })
         element.classList.remove('completed')
     }
+    fetchTask();
 }

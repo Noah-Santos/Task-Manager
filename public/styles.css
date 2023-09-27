@@ -130,6 +130,7 @@ h5 {
   margin-top: 1rem;
 }
 
+
 .data{
   width: 100%;
   background: var(--white);
@@ -147,6 +148,13 @@ h5 {
   padding: 2rem;
 }
 
+.allRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
 .content{
   background: var(--white);
 }
@@ -159,22 +167,33 @@ h5 {
 
 .completed{
   text-decoration: line-through;
-  color: #515151;
+  opacity: .7;
+  color: #5e5e5e;
 }
 
-.grow2{
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  /* width: 25%; */
-  flex-grow: 2;
+.completedForm{
+  background-color: #aaaaaa;
 }
-.grow3{
+
+.marginGone{
+  margin: 0rem;
+}
+
+.finish{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.taskAll{
   display: flex;
   flex-direction: row;
   align-content: center;
-  /* width: 75%; */
-  flex-grow: 3;
+  justify-items: flex-start;
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
 }
 
 .results{
