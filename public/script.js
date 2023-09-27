@@ -74,7 +74,7 @@ btn.addEventListener('click', async(event)=>{
         }else{
             let taskChange = newTask.value;
             let descriptionChange = newDesc.value;
-            console.log(taskChange)
+            // console.log(taskChange)
             fetch(`/api/task/${chosenID}`, {
                 method: "PUT",
                 headers: {'Content-Type': 'application/json'},
